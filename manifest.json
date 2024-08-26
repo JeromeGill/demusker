@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "De-Musk your twitter feed",
+  "description": "Remove any mention of musk from your twitter feed. Because blocking him is clearly not enough.",
+  "version": "1.0",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "hello_extensions.png"
+  },
+  "host_permissions": [
+    "https://twitter.com/*",
+    "https://x.com/*"
+  ],
+  "permissions": [
+    "activeTab",
+    "storage",
+    "tabs"
+  ],
+  "background": {
+    "service_worker": "js/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://twitter.com/*", "https://x.com/*"],
+      "js":["js/hide.js", "/js/jquery-3.6.0.min.js"],
+      "run_at": "document_end"
+    }
+  ]
+}
